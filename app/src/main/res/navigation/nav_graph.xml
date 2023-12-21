@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/currencyListFragment">
+
+    <fragment
+        android:id="@+id/currencyListFragment"
+        android:name="uz.abdulla.currencyapp.screens.CurrencyListFragment"
+        android:label="fragment_currency_list"
+        tools:layout="@layout/fragment_currency_list" >
+        <action
+            android:id="@+id/action_currencyListFragment_to_convertCurrencyFragment"
+            app:destination="@id/convertCurrencyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editAmountFragment"
+        android:name="uz.abdulla.currencyapp.screens.EditAmountFragment"
+        android:label="fragment_edit_amount"
+        tools:layout="@layout/fragment_edit_amount" >
+        <argument
+            android:name="value"
+            app:argType="string"
+            android:defaultValue="1.0" />
+        <argument
+            android:name="position"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/convertCurrencyFragment"
+        android:name="uz.abdulla.currencyapp.screens.ConvertCurrencyFragment"
+        android:label="ConvertCurrencyFragment"
+        tools:layout="@layout/fragment_convert_currency">
+
+        <argument
+            android:name="position"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_convertCurrencyFragment_to_currencyListFragment"
+            app:destination="@id/currencyListFragment"
+            app:popUpTo="@id/convertCurrencyFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_convertCurrencyFragment_to_editAmountFragment"
+            app:destination="@id/editAmountFragment" />
+    </fragment>
+
+</navigation>
